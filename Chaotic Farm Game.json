@@ -12,7 +12,7 @@
     "antialisingEnabledOnMobile": false,
     "folderProject": false,
     "orientation": "landscape",
-    "packageName": "com.example.gamename",
+    "packageName": "com.MJMCreativeWorksAndIdeas.ChaoticFarmGameGJ",
     "pixelsRounding": false,
     "projectUuid": "8c80f710-b75f-4372-a8fd-26441685d8d5",
     "scaleMode": "linear",
@@ -22,10 +22,10 @@
     "version": "1.0.0",
     "name": "Chaotic Farm Game",
     "description": "",
-    "author": "",
+    "author": "MJM Creative works and ideas",
     "windowWidth": 1280,
     "windowHeight": 720,
-    "latestCompilationDirectory": "",
+    "latestCompilationDirectory": "C:\\Users\\jomarcenter-mjm\\Documents\\GDevelop projects\\FinalExport",
     "maxFPS": 60,
     "minFPS": 20,
     "verticalSync": false,
@@ -331,6 +331,24 @@
         "kind": "image",
         "metadata": "",
         "name": "assets\\MJMCWAI-BK.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ObjectBtn2.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "ObjectBtn2",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ObjectBtn3.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\",\"localFilePath\":\"assets/ObjectBtn3.png\"}",
+        "name": "ObjectBtn3",
         "smoothed": true,
         "userAdded": true
       }
@@ -992,14 +1010,50 @@
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
+          "conditions": [
+            {
+              "type": {
+                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+              },
+              "parameters": [
+                "Open_Source",
+                ""
+              ]
+            }
+          ],
           "actions": [
             {
               "type": {
                 "value": "LaunchFile"
               },
               "parameters": [
-                "\"https://github.com/jomarcenter-mjm/At-the-death-doors\"",
+                "\"https://github.com/jomarcenter-mjm/Chaotic-Farm-Game\"",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+              },
+              "parameters": [
+                "Credits",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Scene"
+              },
+              "parameters": [
+                "",
+                "\"Credits\"",
                 ""
               ]
             }
@@ -9561,7 +9615,7 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": true,
-                      "image": "ObjectBtn",
+                      "image": "ObjectBtn3",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -9581,16 +9635,16 @@
                             "y": 0
                           },
                           {
-                            "x": 64,
+                            "x": 150,
                             "y": 0
                           },
                           {
-                            "x": 64,
-                            "y": 64
+                            "x": 150,
+                            "y": 150
                           },
                           {
                             "x": 0,
-                            "y": 64
+                            "y": 150
                           }
                         ]
                       ]
@@ -11689,7 +11743,7 @@
               "parameters": [
                 "GameTimer",
                 "=",
-                "900"
+                "10"
               ]
             },
             {
@@ -16681,6 +16735,16 @@
             },
             {
               "type": {
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "Plant1.growthStage",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
                 "value": "SetSceneVariableAsBoolean"
               },
               "parameters": [
@@ -16718,6 +16782,17 @@
                 "\"linear\"",
                 "0.2",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "CreditEarned",
+                "Text",
+                "=",
+                "ToString(Variable(Points)) + \" cr\""
               ]
             }
           ]
@@ -21239,7 +21314,7 @@
               "parameters": [
                 "StatisticsInformation",
                 "=",
-                "\"Description | Points\nTotal points: ToString(GlobalVariable(FinalScore))\n\""
+                "\"Description | Points\"+ NewLine() +\n\"Total points: \" + ToString(GlobalVariable(FinalScore))\n"
               ]
             }
           ]
